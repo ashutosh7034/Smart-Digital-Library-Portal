@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API</title>
+</head>
+<body>
+    <h1>Test Add Book API</h1>
+    <button onclick="testAddBook()">Test Add Book</button>
+    <div id="result"></div>
+
+    <script>
+        async function testAddBook() {
+            const bookData = {
+                title: "Test Book",
+                author: "Test Author",
+                isbn: "123-456-789",
+                description: "Test Description",
+                category: "Test",
+                publication_year: 2024,
+                quantity: 5,
+                available: 5
+            };
+
+            try {
+                const response = await fetch('../api/books.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(bookData)
+                });
+
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 
+                    '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('result').innerHTML = 
+                    '<p style="color:red;">Error: ' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>
+

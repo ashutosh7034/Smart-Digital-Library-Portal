@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Book Creation</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .test-box { background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 5px; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        pre { background: #fff; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Test Book Creation API</h1>
+    
+    <div class="test-box">
+        <h3>Test Data:</h3>
+        <button onclick="testCreateBook()">Test Create Book</button>
+        <button onclick="testGetBooks()">Test Get Books</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function testCreateBook() {
+            const bookData = {
+                title: "Test Book " + Date.now(),
+                author: "Test Author",
+                isbn: "TEST-" + Math.random().toString(36).substr(2, 9),
+                description: "This is a test book",
+                category: "Test",
+                publication_year: 2024,
+                quantity: 5,
+                available: 5
+            };
+
+            try {
+                const response = await fetch('../api/books.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(bookData)
+                });
+
+                const text = await response.text();
+                let data;
+                try {
+                    data = JSON.parse(text);
+                } catch (e) {
+                    document.getElementById('result').innerHTML = 
+                        '<pre>Error parsing JSON:\n' + text + '</pre>';
+                    return;
+                }
+
+                document.getElementById('result').innerHTML = 
+                    '<pre>Status: ' + response.status + '\n' + 
+                    JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('result').innerHTML = 
+                    '<pre style="color:red;">Error: ' + error.message + '</pre>';
+            }
+        }
+
+        async function testGetBooks() {
+            try {
+                const response = await fetch('../api/books.php', {
+                    credentials: 'same-origin'
+                });
+
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 
+                    '<pre>Status: ' + response.status + '\n' + 
+                    'Books Count: ' + (data.data ? data.data.length : 0) + '\n' +
+                    JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('result').innerHTML = 
+                    '<pre style="color:red;">Error: ' + error.message + '</pre>';
+            }
+        }
+    </script>
+</body>
+</html>
+

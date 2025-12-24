@@ -1,0 +1,33 @@
+# Digital Library Portal - Apache Configuration
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Prevent directory listing
+Options -Indexes
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# PHP settings (if allowed)
+<IfModule mod_php7.c>
+    php_value session.cookie_httponly 1
+    php_value session.cookie_secure 0
+    php_value session.use_only_cookies 1
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Prevent access to sensitive files
+<FilesMatch "^(config|\.htaccess|\.git|database\.sql)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Note: setup_admin.php is accessible - DELETE IT after setup for security!
+
