@@ -33,7 +33,7 @@ $page_title = 'User Dashboard';
         <div class="dashboard-header">
             <h2>Browse Library Books</h2>
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Search books..." onkeyup="filterBooks()">
+                <input type="text" id="search-input" placeholder="🔍 Search by title, author, category..." onkeyup="filterBooks()">
             </div>
         </div>
 

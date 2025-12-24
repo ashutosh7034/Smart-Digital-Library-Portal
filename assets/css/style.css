@@ -506,18 +506,23 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+
+    /*background: rgba(255, 255, 255, 0.95);*/
+    padding: 18px 22px;
+    margin-bottom: 25px;
+
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
 }
 
 .stats-header h2 {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #333;               
     font-size: 24px;
     font-weight: 700;
     margin: 0;
 }
+
 
 .btn-sm {
     padding: 8px 16px;
