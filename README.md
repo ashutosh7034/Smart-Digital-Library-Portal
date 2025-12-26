@@ -2,6 +2,8 @@
 
 A complete full-stack web application for managing a digital library with user authentication, role-based access control, and REST API endpoints.
 
+**Live Demo**: https://smartdigitallibrary.infinityfreeapp.com/
+
 ## Tech Stack
 
 - **Frontend**: HTML, CSS, JavaScript (Vanilla JS)
@@ -93,6 +95,12 @@ Smart-Digital-Library-Portal-1/
    ```
    http://localhost/Smart-Digital-Library-Portal-1
    ```
+
+### Hosted Instance
+
+- A live deployment is available at https://smartdigitallibrary.infinityfreeapp.com/
+- Use it to explore the app without local setup; functionality mirrors the local install.
+- Default admin creds may be rotated; if login fails, reset via your own deployment or local setup scripts.
 
 ## Default Credentials
 

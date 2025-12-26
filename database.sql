@@ -55,4 +55,3 @@ INSERT INTO books (title, author, isbn, description, category, publication_year,
 ('1984', 'George Orwell', '978-0-452-28423-4', 'A dystopian social science fiction novel.', 'Science Fiction', 1949, 4, 4),
 ('Pride and Prejudice', 'Jane Austen', '978-0-14-143951-8', 'A romantic novel of manners.', 'Romance', 1813, 2, 2),
 ('The Catcher in the Rye', 'J.D. Salinger', '978-0-316-76948-0', 'A controversial novel about teenage rebellion.', 'Fiction', 1951, 3, 3);
-
